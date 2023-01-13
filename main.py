@@ -5,115 +5,115 @@ from graphic_arts.start_game_banner import run_screensaver
 
 def attack(char_name: str, char_class: str) -> str:
     """
-    Принимает на вход имя и класс персонажа.
-    Возвращает строку сообщения о нанесённом персонажем уроне
-    в зависимости от его класса.
+    Takes character's name and class as input.
+    Return a string message about the damage dealt
+    depending on the character's class.
     """
     if char_class == 'warrior':
-        return (f'{char_name} нанёс урон противнику равный '
-                f'{5 + randint(3, 5)}')
-    if char_class == 'mage':
-        return (f'{char_name} нанёс урон противнику равный '
-                f'{5 + randint(5, 10)}')
+        return (f'{char_name} dealt '
+                f'{5 + randint(3, 5)} damage to the enemy')
+    if char_class == 'magician':
+        return (f'{char_name} dealt '
+                f'{5 + randint(5, 10)} damage to the enemy')
     if char_class == 'healer':
-        return (f'{char_name} нанёс урон противнику равный '
-                f'{5 + randint(-3, -1)}')
-    return (f'{char_name} нанёс урон противнику равный 5')
+        return (f'{char_name} dealt '
+                f'{5 + randint(-3, -1)} damage to the enemy')
+    return (f'{char_name} dealt 5 damage to the enemy')
 
 
 def defence(char_name: str, char_class: str) -> str:
     """
-    Принимает на вход имя и класс персонажа.
-    Возвращает строку сообщения о блокированном персонажем уроне
-    в зависимости от его класса.
+    Takes character's name and class as input.
+    Return a string message about the damage dealt
+    depending on the character's class.
     """
     if char_class == 'warrior':
-        return (f'{char_name} блокировал {10 + randint(5, 10)} урона')
-    if char_class == 'mage':
-        return (f'{char_name} блокировал {10 + randint(-2, 2)} урона')
+        return (f'{char_name} blocked {10 + randint(5, 10)} damage')
+    if char_class == 'magician':
+        return (f'{char_name} blocked {10 + randint(-2, 2)} damage')
     if char_class == 'healer':
-        return (f'{char_name} блокировал {10 + randint(2, 5)} урона')
-    return '{char_name} блокировал 10 урона'
+        return (f'{char_name} blocked {10 + randint(2, 5)} damage')
+    return '{char_name} blocked 10 damage'
 
 
 def special(char_name: str, char_class: str) -> str:
     """
-    Принимает на вход имя и класс персонажа.
-    Возвращает строку сообщения о задействованной персонажем
-    специальной возможности в зависимости от его класса.
+    Takes character's name and class as input.
+    Return a string message about the special skill
+    used by the character depending on the class.
     """
     if char_class == 'warrior':
-        return (f'{char_name} применил специальное умение '
-                f'«Выносливость {80 + 25}»')
-    if char_class == 'mage':
-        return (f'{char_name} применил специальное умение «Атака {5 + 40}»')
+        return (f'{char_name} used a special skill '
+                f'"Stamina {80 + 25}"')
+    if char_class == 'magician':
+        return (f'{char_name} used a special skill "Attack {5 + 40}"')
     if char_class == 'healer':
-        return (f'{char_name} применил специальное умение «Защита {10 + 30}»')
-    return f'{char_name} не примернил специальное умение'
+        return (f'{char_name} used a special skill "Defense {10 + 30}"')
+    return f'{char_name} didn\'t use a special skill'
 
 
 def start_training(char_name: str, char_class: str) -> str:
     """
-    Принимает на вход имя и класс персонажа.
-    Возвращает сообщения о результатах цикла тренировки персонажа.
+    Takes character's name and class as input.
+    Returns the result of a training cycle.
     """
     if char_class == 'warrior':
-        print(f'{char_name}, ты Воитель — отличный боец ближнего боя.')
-    if char_class == 'mage':
-        print(f'{char_name}, ты Маг — превосходный укротитель стихий.')
+        print(f'{char_name}, you are a Warrior, proficient in melee combat.')
+    if char_class == 'magician':
+        print(f'{char_name}, you are a Magician, masterfully taming the elements.')
     if char_class == 'healer':
-        print(f'{char_name}, ты Лекарь — чародей, способный исцелять раны.')
-    print('Потренируйся управлять своими навыками.')
-    print('Введи одну из команд: attack — чтобы атаковать противника, '
-          'defence — чтобы блокировать атаку противника или '
-          'special — чтобы использовать свою суперсилу.')
-    print('Если не хочешь тренироваться, введи команду skip.')
+        print(f'{char_name}, you are a Healer, a sorcerer who heals wounds.')
+    print('Train your skills.')
+    print('Enter one of the commands: attack — to attack the enemy, '
+          'defense — to block the enemy attack, or '
+          'special — to use your special power.')
+    print('If you don\'t want to train, enter skip.')
     cmd = None
     while cmd != 'skip':
-        cmd = input('Введи команду: ')
+        cmd = input('Enter a command: ')
         if cmd == 'attack':
             print(attack(char_name, char_class))
         if cmd == 'defence':
             print(defence(char_name, char_class))
         if cmd == 'special':
             print(special(char_name, char_class))
-    return 'Тренировка окончена.'
+    return 'The training is over.'
 
 
 def choice_char_class()-> str:
     """
-    Возвращает строку с выбранным
-    классом персонажа.
+    Returns a string with the selected
+    class of the character.
     """
     approve_choice: str  = None
     char_class: str  = None
     while approve_choice != 'y':
-        char_class = input('Введи название персонажа, '
-                           'за которого хочешь играть: Воитель — warrior, '
-                           'Маг — mage, Лекарь — healer: ')
+        char_class = input('Enter the class '
+                           'of your character: Warrior — warrior, '
+                           'Magician — magician, Healer — healer: ')
         if char_class == 'warrior':
-            print('Воитель — дерзкий воин ближнего боя. '
-                  'Сильный, выносливый и отважный.')
-        if char_class == 'mage':
-            print('Маг — находчивый воин дальнего боя. '
-                  'Обладает высоким интеллектом.')
+            print('Warrior — a fierce melee fighter. '
+                  'Strong, resilient, and brave.')
+        if char_class == 'magician':
+            print('Magician — a brilliant long-range fighter. '
+                  'Master of magical powers.')
         if char_class == 'healer':
-            print('Лекарь — могущественный заклинатель. '
-                  'Черпает силы из природы, веры и духов.')
-        approve_choice = input('Нажми (Y), чтобы подтвердить выбор, '
-                               'или любую другую кнопку, '
-                               'чтобы выбрать другого персонажа ').lower()
+            print('Healer — a powerful shaman. '
+                  'Draws strength from nature, faith, and spirits.')
+        approve_choice = input('Press (Y) to confirm '
+                               'or any other button '
+                               'to select another class ').lower()
     return char_class
 
 
 if __name__ == '__main__':
     run_screensaver()
-    print('Приветствую тебя, искатель приключений!')
-    print('Прежде чем начать игру...')
-    char_name: str = input('...назови себя: ')
-    print(f'Здравствуй, {char_name}! '
-          'Сейчас твоя выносливость — 80, атака — 5 и защита — 10.')
-    print('Ты можешь выбрать один из трёх путей силы:')
-    print('Воитель, Маг, Лекарь')
+    print('Greetings, adventurer!')
+    print('Before you start playing...')
+    char_name: str = input('... state your name: ')
+    print(f'Welcome, {char_name}! '
+          'You have 80 stamina points, 5 attack points, and 10 defense points.')
+    print('You can choose one of the three ways of the Force:')
+    print('Warrior, Magician, Healer')
     char_class: str = choice_char_class()
     print(start_training(char_name, char_class))
